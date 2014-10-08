@@ -1,0 +1,25 @@
+snippet htmlapp
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+			<meta name="apple-mobile-web-app-capable" content="yes" />
+			<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+			<meta name="format-detection"content="telephone=no, email=no" />
+			<title>${1:page test}</title>
+		</head>
+		<body>
+			${2:body}
+			<script src="http://libs.useso.com/js/jquery/1.9.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		</body>
+	</html>
+snippet meta:viewport
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+snippet meta:app
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+snippet meta:nophone
+	<meta name="format-detection"content="telephone=no, email=no" />
+snippet link:appstart
+	<link rel="apple-touch-startup-image" href="${1:favicon.png}">
