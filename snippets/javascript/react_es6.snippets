@@ -1,0 +1,86 @@
+
+snippet jcs
+	var cx = React.addons.classSet;
+snippet jcdm
+	componentDidMount () {
+		${1}
+	}
+snippet jcdup
+	componentDidUpdate(prevProps, prevState) {
+		${1}
+	}
+snippet jcwm
+	componentWillMount() {
+		${1}
+	}
+snippet jcwr
+	componentWillReceiveProps(nextProps) {
+		${1}
+	}
+snippet jcwun
+	componentWillUnmount() {
+		${1}
+	}
+snippet jcwu
+	componentWillUpdate(nextProps, nextState) {
+		${1}
+	}
+snippet jcx
+	cx({
+		${1}: ${2}
+	});
+snippet jfup
+	forceUpdate(${1:callback});
+snippet jpt
+	propTypes: {
+		${1}: React.PropTypes.${2:string}
+	},
+snippet jren
+	render() {
+		return (
+			${1:<div />}
+		);
+	}
+snippet jsst
+	setState({
+		${1}: ${2}
+	});
+snippet jscu
+	shouldComponentUpdate(nextProps, nextState) {
+		${1}
+	}
+snippet jprops
+	this.props.${1}
+snippet jstate
+	this.state.${1}
+snippet jtrp
+	transferPropsTo(${1});
+snippet jcons
+	constructor(prots,context,updater) {
+		${1}
+	}
+snippet jcla
+	import React from 'react';
+
+	class ${1:name} extends React.Component {
+		constructor(props,context,updater){
+			super();
+			${2}
+		}
+
+		render() {
+			return (
+				<div>
+					${3}
+				</div>
+			);
+		}
+	}
+	DividerComponent.defaultProps = {
+		${4}
+	};
+
+	export default $1;
+
+
+

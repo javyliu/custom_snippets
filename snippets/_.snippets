@@ -5,4 +5,7 @@ snippet lc
 snippet ops
 	options: 'default charset=utf8'
 snippet tap
-	tap{|t|Rails.logger.info(t)}
+	tap{|t|Rails.logger.info(t.inspect)}
+snippet swi
+	set wildignore+=${1:*/node_modules/*}
+	${2}
