@@ -465,3 +465,23 @@ snippet wapp
 		},
 		globalData: ${4:'I am global data'}
 	});
+snippet gulprsync
+	gulp.task('deploy', () => {
+		return gulp.src('dist/**')
+			.pipe(rsync({
+				root: 'dist',
+				hostname: 'qmliu@192.168.30.244',
+				destination: '/mnt/e/web_apps/weapp_base/',
+				archive: true,
+				silent: true,
+				//  username: 'oswap',
+				chmod: 'ugo=rwX',
+				//  username: 'qmliu',
+				port: '2222',
+				clean: true,
+				//  progress: true,
+				compress: true
+			}))
+	})
+
+
