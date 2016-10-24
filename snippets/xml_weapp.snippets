@@ -1,0 +1,111 @@
+snippet wactionsheet
+	<action-sheet hidden="${1:true}" bindchange="${2}">
+		<action-sheet-item class="item" bindtap="${3}">${4}</action-sheet-item>
+		<action-sheet-cancel class="cancel">${5:取消}</action-sheet-cancel>
+	</action-sheet>
+snippet wblockif
+	<block wx:if="{{ ${1} }}">
+	  ${2}
+	</block>
+snippet wbutton
+	<button type="${1:default}" size="${2:default}" loading="${3:true}" plain="${4:false}" disabled="${5:false}" bindtap="${6}" hover-class="${7:custom-button-hover-class}" ${8:formType="${9:submit}"}>${10}</button>
+snippet wcanvas
+	<canvas canvas-id="${1}" binderror="${2}" ${3:hidden}></canvas>
+snippet wcheckbox
+	<checkbox value="${1}" checked="${2:checked}"/>${3}
+snippet wcheckboxgroup
+	<checkbox-group ${1:bindchange="${2}"}>
+		<label class="checkbox">
+			<checkbox value="${3}" checked="${4:checked}"/>${5}
+		</label>
+	</checkbox-group>
+snippet wtext
+	<text> {{ ${1} }} </view>
+snippet wfor
+	<view wx:for-items="{{ ${1} }}"> {{ ${2} }} </view>
+snippet wform
+	<form ${1:bindsubmit="${2:formSubmit}"} ${3:bindreset="${4:formReset}"}>
+		${5}
+	</form>
+snippet wicon
+	<icon type="${1}" size="${2}"/>
+snippet wimage
+	<image style="${1}" mode="${2}" src="${3}" ${4:binderror="${5}"} ${6:bindload="${7}"}></image>
+snippet winput
+	<input placeholder="${1}" focus="${2:false}" value="${3}" type="${4:text}" password="${5:false}" ${6:placeholder-style="${7:custom-placeholder-style}"} ${8:placeholder-class="${9:custom-placeholder-class}"} disabled="${10:false}" maxlength=${11:0} bindchange="${12}" bindinput="${13}" bindfocus="${14}" bindblur="${15}" ${16:auto-focus}/>
+	${17}
+snippet winputautofocus
+	<input placeholder="${1}" auto-focus/>
+  	${2}
+snippet winputfocus
+	<input placeholder="${1}" focus="${2:false}" />
+snippet wlabel
+	<label ${1:class="${2}"} for="${3}">
+		${4}
+	</label>
+snippet wloading
+	<loading ${1:hidden}>
+		${2}
+	</loading>
+snippet wmap
+	<map longitude="${1}" latitude="${2}" markers="${3}" covers="${4}" ${5:scale="${6}"}></map>
+snippet wmodal
+	<modal ${1:title="${2}"} ${3:confirm-text="${4:确定}"} ${5:cancel-text="${6:取消}" } ${7:hidden} bindconfirm="${8}" bindcancel="${9}" ${10:no-cancel"}>
+		${11}
+	</modal>
+snippet wnavigator
+	<navigator url="${1}" hover-class="${2}" ${3:redirect}>${4}</navigator>
+snippet wprogress
+	<progress percent="${1}" ${2:show-info} stroke-width="${3}" color="${4}" ${5:active}/>
+snippet wradio
+	<radio value="${1}" checked="${2:false}"/>${3}
+snippet wradiogroup
+	<radio-group class="${1}" bindchange="${2}">
+		<label class="radio">
+			<radio value="${3}" checked="${4:checked}"/>${5}
+		</label>
+	</radio-group>
+snippet wscrollview
+	<scroll-view scroll-y="${1:true}" bindscrolltoupper="${2}" bindscrolltolower="${3}" bindscroll="${4}" scroll-into-view="${5}" scroll-top="${5}">
+		${6}
+	</scroll-view>
+snippet wslider
+	<slider bindchange="${1}" min="${2}" max="${3}" ${5:show-value} step=${6:1} ${7:disabled="${7:false}"} value="${8}"/>
+snippet wswpier
+	<swpier indicator-dots="${1}" autoplay="${2:true}" interval="${3:1500}" duration="${4:500}">
+		<block wx:for-items="${5}">
+			<swpier-item>
+				<image src="{{ ${6} }}" class="slide-image" width="${7}" height="${8}"/>
+			</swpier-item>
+		</block>
+	</swpier>
+snippet wswitch
+	<switch type="${1}" checked="${2:false}" bindchange="${3}"/>
+snippet wtemplate
+	<template name="${1}" is="${2}">
+		${3}
+	</template>
+snippet wtoast
+	<toast ${1:hidden} ${2:duration="${3:1500}"} bindchange="${4}">
+		${5}
+	</toast>
+snippet wvideo
+	<video src="${1}" binderror="${2}" ${3:hidden}></video>
+snippet wview
+	<view>${1}</view>
+snippet wviewbind
+	<view bindtap="${1}">
+		${2}
+	</view>
+snippet wviewelif
+	<view wx:elif="{{ ${1} }}">
+		${2}
+	</view>
+snippet wviewelse
+	<view wx:else="{{ ${1} }}">
+		${2}
+	</view>
+snippet wviewif
+	<view wx:if="{{ ${1} }}">
+		${2}
+	</view>

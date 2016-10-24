@@ -1,0 +1,467 @@
+snippet wpage
+	Page({
+		data:{
+			${1}
+		},
+		onLoad:function(options){
+			${2}
+		},
+		onReady:function(){
+			${3}
+		},
+		onShow:function(){
+			${4}
+		},
+		onHide:function(){
+			${5}
+		},
+		onUnload:function(){
+			${6}
+		}
+	})
+snippet apichooseimg
+	wx.chooseImage({
+		count: ${1:1},
+		sizeType: ${2:['original', 'compressed']}, // 可以指定是原图还是压缩图，默认二者都有
+		sourceType: ${3:['album', 'camera']}, // 可以指定来源是相册还是相机，默认二者都有
+		success: function (res) {
+			${4:var tempFilePaths = res.tempFilePaths}
+		},
+		fail: function(res) {
+			${5}
+		},
+		complete: function(res) {
+			${6}
+		}
+	});
+snippet apichoosevideo
+	wx.chooseVideo({
+		sourceType: ${1:['album','camera']},
+		maxDuration: ${2},
+		camera: ${3:['front','back']},
+		success: function(res) {
+			${4:var tempFilePath = res.tempFilePath;
+			var duration = res.duration;
+			var size = res.size;
+			var height = res.height;
+			var weight = res.weight;}
+		},
+		fail: function(res) {
+			${5}
+		},
+		complete: function(res) {
+			${6}
+		}
+	});
+snippet apiclearstorage
+	wx.clearStorage();
+snippet apiclearstoragesync
+	try {
+		wx.clearStorageSync();
+	} catch(e) {
+		${1}
+	}
+snippet apicloseskt
+	wx.closeSocket();
+snippet apiconnskt
+	wx.connectSocket({
+		//必需
+		url: '${1}',
+		method: "${2}",
+		data: {
+			${3}
+		},
+		header: {
+			${4}
+		},
+		success: function(res) {
+			${5}
+		},
+		fail: function(res) {
+			{6}
+		},
+		complete: function(res) {
+			${7}
+		}
+		});
+	});
+snippet apidownloadfile
+	wx.downloadFile({
+		//必需
+		url: '${1}',
+		type: ${2},
+		name: '${3}',
+		header: {
+			${5}
+		},
+		success: function(res) {
+			${6}
+		},
+		fail: function(res) {
+			{7}
+		},
+		complete: function(res) {
+			${8}
+		}
+	});
+snippet apigetbgaudioplayerstate
+	wx.getBackgroundAudioPlayerState({
+		success: function(res) {
+			${1:var status = res.status;
+			var dataUrl = res.dataUrl;
+			var currentPosition = res.currentPosition;
+			var duration = res.duration;
+			var downloadPercent = res.downloadPercent;}
+			${2}
+		}
+	})
+snippet apigetlocation
+	wx.getLocation({
+		type: '${1}',
+		success: function(res) {
+			${2:var latitude = res.latitude
+			var longitude = res.longitude
+			var speed = res.speed
+			var accuracy = res.accuracy}
+		},
+		fail: function(res) {
+			${3}
+		},
+		complete: function(res) {
+			${4}
+		}
+	});
+snippet apigetnetworktype
+	wx.getNetworkType({
+		success: function(res) {
+			var networkType = res.networkType // 返回网络类型2g，3g，4g，wifi
+			${1}
+		}
+	});
+snippet apigetstorage
+	wx.getStorage({
+		key: '${1}',
+		success: function(res) {
+			${2}
+		},
+		fail: function(res) {
+			${3}
+		},
+		complete: function(res) {
+			${4}
+		}
+	});
+snippet apigetstoragesync
+	wx.getStorageSync('${1}');
+snippet apigetsysinfo
+	wx.getSystemInfo({
+		success: function(res) {
+			${1:var model = res.model;
+			var pixelRatio = res.pixelRatio;
+			var windowWidth = res.windowWidth;
+			var windowHeight = res.windowHeight;
+			var language = res.language;
+			var version = res.version;}
+		},
+		fail: function(res) {
+			${2}
+		},
+		complete: function(res) {
+			${3}
+		}
+	});
+snippet apigetuserinfo
+	wx.getUserInfo({
+		success: function(res) {
+			${1:var userInfo = res.userInfo;
+			var nickName = userInfo.nickName;
+			var avatarUrl = userInfo.avatarUrl;
+			var gender = userInfo.gender ;//性别 0：未知、1：男、2：女
+			var province = userInfo.province;
+			var city = userInfo.city;
+			var country = userInfo.country;
+			var signature = res.signature;
+			var encryptData = res.encryptData;}
+		},
+		fail: function(res) {
+			${5}
+		},
+		complete: function(res) {
+			${6}
+		}
+	});
+snippet apihiddenkeyboard
+	wx.hideKeyboard();
+snippet apihidenavbarloading
+	wx.hideNavigationBarLoading();
+snippet apilogin
+	wx.login({
+		success: function(res) {
+			var code = res.code;
+			var errMsg = res.errMsg;
+		},
+		fail: function(res) {
+			${5}
+		},
+		complete: function(res) {
+			${6}
+		}
+	});
+snippet apinavigateback
+	wx.navigateBack();
+snippet apinavigateto
+	wx.navigateTo({
+		url: '${1}'
+	})
+snippet apiaccelerometerchange
+	wx.onAccelerometerChange(function(res) {
+		${1:console.log(res.x)
+		console.log(res.y)
+		console.log(res.z)}
+	});
+snippet apionbgaudiopause
+	wx.onBackgroundAudioPause(function(res){
+		${1}
+	});
+snippet apionbgaudioplay
+	wx.onBackgroundAudioPlay(function(res){
+		${1}
+	});
+snippet apionbgaudiostop
+	wx.onBackgroundAudioStop(function(res){
+		${1}
+	});
+snippet apicompasschange
+	wx.onCompassChange(function (res) {
+		${1:console.log(res.direction)}
+	})
+snippet apionsktcolse
+	wx.onSocketClose(function(res) {
+		${1}
+	});
+snippet apionskterr
+	wx.onSocketError(function(res) {
+		${1}
+	})
+snippet apionsktmsg
+	wx.onSocketMessage(function(res) {
+		${1}
+	});
+snippet apionsktopen
+	wx.onSocketOpen(function(res) {
+		${1}
+	})
+snippet apiopenlocation
+	wx.openLocation({
+		//必需
+		latitude: ${1},
+		//必需
+		longitude: ${2},
+		scale: ${3:28},
+		name: ${4},
+		address: ${5},
+		success: function(res){
+			${6}
+		},
+		fail: function(res){
+			${7}
+		},
+		complete: function(res){
+			$(8)
+		}
+	});
+snippet apipausebgaudio
+	wx.pauseBackgroundAudio();
+snippet apipausevoice
+	wx.pauseVoice();
+snippet apipreviewimg
+	wx.previewImage({
+		current: '${1}', // 当前显示图片的http链接
+		urls: [${2}], // 需要预览的图片http链接列表
+		success: function(res) {
+			${3}
+		},
+		fail: function(res) {
+			${4}
+		},
+		complete: function(res) {
+			${5}
+		}
+	});
+snippet apiredirectto
+	wx.redirectTo({
+		url: '${1}'
+	})
+snippet apirequest
+	wx.request({
+		//必需
+		url: '${1}',
+		data: {
+			${2}
+		},
+		header: {
+				${3:'Content-Type': 'application/json'}
+		},
+		success: function(res) {
+			${4}
+		},
+		fail: function(res) {
+			${5}
+		},
+		complete: function(res) {
+			${6}
+		}
+	})
+snippet apipayment
+	wx.requestPayment({
+		'timeStamp': '${1}',
+		'nonceStr': '${2}',
+		'package': '${3}',
+		'signType': 'MD5',
+		'paySign': '${4}',
+		'success':function(res){
+		 	${5};
+		},
+		'fail':function(res){
+		 	${6}
+		},
+		'complete':function(res){
+		 	${7}
+		}
+	})
+snippet apisavefile
+	wx.saveFile({
+		tempFilePath: ${1},
+		success: function(res) {
+			var savedFilePath = res.savedFilePath;
+			${2}
+		},
+		success: function(res) {
+			${3}
+		},
+		fail: function(res) {
+			${4}
+		},
+		complete: function(res) {
+			${5}
+		}
+	});
+snippet apiseekbgaudio
+	wx.seekBackgroundAudio({
+		position: ${1},
+		success: function(res) {
+			${2}
+		},
+		fail: function(res) {
+			${3}
+		},
+		complete: function(res) {
+			${4}
+		}
+	});
+snippet apisendsktmsg
+	wx.sendSocketMessage({
+			//必需
+			data:{
+				${1}
+			},
+			success: function(res) {
+			${2}
+		},
+		fail: function(res) {
+			${3}
+		},
+		complete: function(res) {
+			${4}
+		}
+	});
+snippet apisetnavbartitle
+	wx.setNavigationBarTitle({
+		title: ${1},
+		success: function(res) {
+			${2}
+		},
+		fail: function(res) {
+			${3}
+		},
+		complete: function(res) {
+			${4}
+		}
+	});
+snippet apisetstorage
+	wx.setStorage({
+		key:"${1}",
+		data:"${2}",
+		success: function(res) {
+			${3}
+		},
+		fail: function(res) {
+			${4}
+		},
+		complete: function(res) {
+			${5}
+		}
+	})
+snippet apisetstoragesync
+	try {
+		wx.setStorageSync('${1}', '${2}')
+	} catch (e) {
+		${3}
+	}
+snippet apishownavbarloading
+	wx.showNavigationBarLoading();
+snippet apistartrecord
+	wx.startRecord({
+		success: function(res) {
+			${1:var tempFilePath = res.tempFilePath }
+		},
+		fail: function(res) {
+			 ${2}
+		},
+		complete: function(res) {
+			${3}
+		}
+	})
+snippet apistopbgaudio
+	wx.stopBackgroundAudio();
+snippet apistoprecord
+	wx.stopRecord();
+snippet apistopvoice
+	wx.stopVoice();
+snippet apiuploadfile
+	wx.uploadFile({
+		//必需
+		url: '${1}',
+		//必需
+		filePath: ${2},
+		//必需
+		name: '${3}',
+		formData:{
+			${4}
+		},
+		header: {
+			${5}
+		},
+		success: function(res) {
+			${6}
+		},
+		fail: function(res) {
+			{7}
+		},
+		complete: function(res) {
+			${8}
+		}
+	});
+snippet wapp
+	App({
+		onLaunch: function () {
+			${1}
+		},
+		onShow: function () {
+				${2}
+		},
+		onHide: function () {
+				${3}
+		},
+		globalData: ${4:'I am global data'}
+	});
