@@ -34,6 +34,35 @@ snippet apichooseimg
 			${6}
 		}
 	});
+snippet apipreviewimg
+	wx.previewImage({
+		current: '${1}', // 当前显示图片的http链接
+		urls: [${2}], // 需要预览的图片http链接列表
+		success: function(res) {
+			${3}
+		},
+		fail: function(res) {
+			${4}
+		},
+		complete: function(res) {
+			${5}
+		}
+	});
+snippet apigetimginfo
+	wx.getImageInfo({
+		src: '${1}',
+		success: function(res){
+			console.log(res.width, res.height)
+			${2}
+		},
+		fail: function(){
+			${3}
+		},
+		complete: function(){
+			${4}
+		}
+	})
+
 snippet apichoosevideo
 	wx.chooseVideo({
 		sourceType: ${1:['album','camera']},
@@ -53,14 +82,6 @@ snippet apichoosevideo
 			${6}
 		}
 	});
-snippet apiclearstorage
-	wx.clearStorage();
-snippet apiclearstoragesync
-	try {
-		wx.clearStorageSync();
-	} catch(e) {
-		${1}
-	}
 snippet apicloseskt
 	wx.closeSocket();
 snippet apiconnskt
@@ -104,17 +125,25 @@ snippet apidownloadfile
 			${8}
 		}
 	});
-snippet apigetbgaudioplayerstate
-	wx.getBackgroundAudioPlayerState({
-		success: function(res) {
-			${1:var status = res.status;
-			var dataUrl = res.dataUrl;
-			var currentPosition = res.currentPosition;
-			var duration = res.duration;
-			var downloadPercent = res.downloadPercent;}
-			${2}
+snippet apiopenlocation
+	wx.openLocation({
+		//必需
+		latitude: ${1},
+		//必需
+		longitude: ${2},
+		scale: ${3:28},
+		name: ${4},
+		address: ${5},
+		success: function(res){
+			${6}
+		},
+		fail: function(res){
+			${7}
+		},
+		complete: function(res){
+			$(8)
 		}
-	})
+	});
 snippet apigetlocation
 	wx.getLocation({
 		type: '${1}',
@@ -131,19 +160,17 @@ snippet apigetlocation
 			${4}
 		}
 	});
-snippet apigetnetworktype
-	wx.getNetworkType({
+snippet apichooselocation
+	wx.chooseLocation({
 		success: function(res) {
-			var networkType = res.networkType // 返回网络类型2g，3g，4g，wifi
-			${1}
-		}
-	});
-snippet apigetstorage
-	wx.getStorage({
-		key: '${1}',
-		success: function(res) {
-			${2}
+			${1:var latitude = res.latitude
+			var longitude = res.longitude
+			var name = res.name
+			var address = res.address}
 		},
+		cancel: function(){
+			${2}
+		}
 		fail: function(res) {
 			${3}
 		},
@@ -151,8 +178,13 @@ snippet apigetstorage
 			${4}
 		}
 	});
-snippet apigetstoragesync
-	wx.getStorageSync('${1}');
+snippet apigetnetworktype
+	wx.getNetworkType({
+		success: function(res) {
+			var networkType = res.networkType // 返回网络类型2g，3g，4g，wifi
+			${1}
+		}
+	});
 snippet apigetsysinfo
 	wx.getSystemInfo({
 		success: function(res) {
@@ -170,6 +202,37 @@ snippet apigetsysinfo
 			${3}
 		}
 	});
+snippet apigetsysinfosync
+	try {
+		var res = wx.getSystemInfoSync();
+		${1:var model = res.model;
+		var pixelRatio = res.pixelRatio;
+		var windowWidth = res.windowWidth;
+		var windowHeight = res.windowHeight;
+		var language = res.language;
+		var version = res.version;}
+	} catch (e) {
+		console.log("myerror:",e);
+		${2}
+	}
+snippet apiaccelerometerchange
+	wx.onAccelerometerChange(function(res) {
+		${1:console.log(res.x)
+		console.log(res.y)
+		console.log(res.z)}
+	});
+snippet apicompasschange
+	wx.onCompassChange(function (res) {
+		${1:console.log(res.direction)}
+	})
+snippet apimakephonecall
+	wx.makePhoneCall({
+		phoneNumber: '18600970000',
+		success: function(res){
+			${1}
+		}
+	})
+
 snippet apigetuserinfo
 	wx.getUserInfo({
 		success: function(res) {
@@ -207,33 +270,24 @@ snippet apilogin
 			${6}
 		}
 	});
+snippet apichecksession
+	wx.checkSession({
+		success: function(){
+			${1}
+		},
+		fail: function(){
+			${2}
+		},
+		complete: function(){
+			${3}
+		}
+	})
+
 snippet apinavigateback
 	wx.navigateBack();
 snippet apinavigateto
 	wx.navigateTo({
 		url: '${1}'
-	})
-snippet apiaccelerometerchange
-	wx.onAccelerometerChange(function(res) {
-		${1:console.log(res.x)
-		console.log(res.y)
-		console.log(res.z)}
-	});
-snippet apionbgaudiopause
-	wx.onBackgroundAudioPause(function(res){
-		${1}
-	});
-snippet apionbgaudioplay
-	wx.onBackgroundAudioPlay(function(res){
-		${1}
-	});
-snippet apionbgaudiostop
-	wx.onBackgroundAudioStop(function(res){
-		${1}
-	});
-snippet apicompasschange
-	wx.onCompassChange(function (res) {
-		${1:console.log(res.direction)}
 	})
 snippet apionsktcolse
 	wx.onSocketClose(function(res) {
@@ -251,43 +305,8 @@ snippet apionsktopen
 	wx.onSocketOpen(function(res) {
 		${1}
 	})
-snippet apiopenlocation
-	wx.openLocation({
-		//必需
-		latitude: ${1},
-		//必需
-		longitude: ${2},
-		scale: ${3:28},
-		name: ${4},
-		address: ${5},
-		success: function(res){
-			${6}
-		},
-		fail: function(res){
-			${7}
-		},
-		complete: function(res){
-			$(8)
-		}
-	});
-snippet apipausebgaudio
-	wx.pauseBackgroundAudio();
 snippet apipausevoice
 	wx.pauseVoice();
-snippet apipreviewimg
-	wx.previewImage({
-		current: '${1}', // 当前显示图片的http链接
-		urls: [${2}], // 需要预览的图片http链接列表
-		success: function(res) {
-			${3}
-		},
-		fail: function(res) {
-			${4}
-		},
-		complete: function(res) {
-			${5}
-		}
-	});
 snippet apiredirectto
 	wx.redirectTo({
 		url: '${1}'
@@ -336,29 +355,65 @@ snippet apisavefile
 			var savedFilePath = res.savedFilePath;
 			${2}
 		},
-		success: function(res) {
+		fail: function(res) {
 			${3}
 		},
-		fail: function(res) {
-			${4}
-		},
 		complete: function(res) {
-			${5}
+			${4}
 		}
-	});
-snippet apiseekbgaudio
-	wx.seekBackgroundAudio({
-		position: ${1},
-		success: function(res) {
+	})
+snippet apigetsavedfileinfo
+	wx.getSavedFileInfo({
+		filePath: '${1}',
+		success: function(res){
+			console.log(res.size, res.createTime)
+			${2}
+		}
+	})
+
+snippet apigetsavedfilelist
+	wx.getSavedFileList({
+		success: function(res){
+			console.log(res.fileList,res.errMsg)
+			${1}
+		},
+		fail: function(res){
 			${2}
 		},
-		fail: function(res) {
+		complete: function(res){
+			${2}
+		}
+	})
+snippet apiremovesavedfile
+	wx.removeSavedFile({
+		filePath: ${1},
+		success: function(res){
+			console.log(res)
+			${2}
+		},
+		fail: function(res){
 			${3}
 		},
-		complete: function(res) {
+		complete: function(res){
 			${4}
 		}
-	});
+	})
+snippet apiopendocument
+	wx.openDocument({
+		filePath: ${1},
+		success: function(res){
+			console.log(res)
+			${2}
+		},
+		fail: function(res){
+			console.log(res)
+			${3}
+		},
+		complete: function(res){
+			console.log(res)
+			${4}
+		}
+	})
 snippet apisendsktmsg
 	wx.sendSocketMessage({
 			//必需
@@ -408,6 +463,57 @@ snippet apisetstoragesync
 	} catch (e) {
 		${3}
 	}
+snippet apigetstorage
+	wx.getStorage({
+		key: '${1}',
+		success: function(res) {
+			${2}
+		},
+		fail: function(res) {
+			${3}
+		},
+		complete: function(res) {
+			${4}
+		}
+	});
+snippet apigetstoragesync
+	wx.getStorageSync('${1}');
+snippet apiclearstorage
+	wx.clearStorage();
+snippet apiclearstoragesync
+	try {
+		wx.clearStorageSync();
+	} catch(e) {
+		${1}
+	}
+snippet apigetstorageinfo
+	wx.getStorageInfo({
+		success: function(res){
+			console.log(res)
+		}
+	})
+snippet apigetstorageinfosync
+	try {
+		var res = wx.getStorageInfoSync()
+		console.log(res.keys)
+		${1}
+	} catch (e) {
+		${2}
+	}
+snippet apiremovestorage
+	wx.removeStorage({
+		key: '${1}',
+		success: function(res){
+			console.log(res.data)
+			${2}
+		}
+	})
+snippet apiremovestoragesync
+	try {
+		wx.removeStorageSync('${1}')
+	} catch (e) {
+	  ${2}
+	}
 snippet apishownavbarloading
 	wx.showNavigationBarLoading();
 snippet apistartrecord
@@ -422,8 +528,48 @@ snippet apistartrecord
 			${3}
 		}
 	})
+snippet apionbgaudiopause
+	wx.onBackgroundAudioPause(function(res){
+		${1}
+	});
+snippet apionbgaudioplay
+	wx.onBackgroundAudioPlay(function(res){
+		${1}
+	});
+snippet apionbgaudiostop
+	wx.onBackgroundAudioStop(function(res){
+		${1}
+	});
+snippet apipausebgaudio
+	wx.pauseBackgroundAudio();
 snippet apistopbgaudio
 	wx.stopBackgroundAudio();
+snippet apiseekbgaudio
+	wx.seekBackgroundAudio({
+		position: ${1},
+		success: function(res) {
+			${2}
+		},
+		fail: function(res) {
+			${3}
+		},
+		complete: function(res) {
+			${4}
+		}
+	});
+snippet apigetbgaudioplayerstate
+	wx.getBackgroundAudioPlayerState({
+		success: function(res) {
+			${1:var status = res.status;
+			var dataUrl = res.dataUrl;
+			var currentPosition = res.currentPosition;
+			var duration = res.duration;
+			var downloadPercent = res.downloadPercent;}
+			${2}
+		}
+	})
+snippet apicreateaudiocontext
+	this.audio_ctx = wx.createAudioContext('${1:myaudio}')
 snippet apistoprecord
 	wx.stopRecord();
 snippet apistopvoice
@@ -452,6 +598,62 @@ snippet apiuploadfile
 			${8}
 		}
 	});
+snippet apishowtoast
+	wx.showToast({
+		title: '${1:操作成功}',
+		icon: '${2:success}',
+		duration: ${3:2000},
+		success: function(){
+			${4}
+		},
+		fail: function(){
+			${5}
+		},
+		complete: function(){
+			${6}
+		}
+	})
+snippet apihidetoast
+	wx.hideToast()
+snippet apishowmodal
+	wx.showModal({
+		title: '${1:提示}',
+		content: '${2:模态弹窗}',
+		showConcel: ${3:false},
+		cancelText: '${4:取消}',
+		cancelColor: '${5:#000000}',
+		confirmText: '${6:确定}',
+		confirmColor: '${7:#3cc51f}'
+		success: function(res){
+			${8}
+			if (res.confirm){
+				console.log('用户点击确定')
+			}
+		},
+		fail: function(){
+			${9}
+		},
+		complete: function(){
+			${10}
+		}
+	})
+snippet apishowactionsheet
+	wx.showActionSheet({
+		itemList: ${1:['A','B','C']},
+		itemColor: '${2:#000000}',
+		success: function(res){
+			${3}
+			if(!res.cancel){
+				console.log(res.tapIndex)
+			}
+		},
+		fail: function(){
+			${4}
+		},
+		complete:function(){
+			${5}
+		}
+	})
 snippet wapp
 	App({
 		onLaunch: function () {

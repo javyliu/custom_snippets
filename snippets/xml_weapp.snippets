@@ -20,7 +20,7 @@ snippet wcheckboxgroup
 		</label>
 	</checkbox-group>
 snippet wtext
-	<text> {{ ${1} }} </view>
+	<text> {{ ${1} }} </text>
 snippet wfor
 	<view wx:for-items="{{ ${1} }}"> {{ ${2} }} </view>
 snippet wform
@@ -36,7 +36,7 @@ snippet winput
 	${17}
 snippet winputautofocus
 	<input placeholder="${1}" auto-focus/>
-  	${2}
+	${2}
 snippet winputfocus
 	<input placeholder="${1}" focus="${2:false}" />
 snippet wlabel
@@ -109,3 +109,6 @@ snippet wviewif
 	<view wx:if="{{ ${1} }}">
 		${2}
 	</view>
+snippet wtextarea
+	<textarea placeholder='${1}' ${2:auto-height} bindlinechange='${4}' bindblur='${5}' />
+
