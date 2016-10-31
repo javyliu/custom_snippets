@@ -1,14 +1,14 @@
 snippet wactionsheet
 	<action-sheet hidden="${1:true}" bindchange="${2}">
 		<action-sheet-item class="item" bindtap="${3}">${4}</action-sheet-item>
-		<action-sheet-cancel class="cancel">${5:取消}</action-sheet-cancel>
+		<action-sheet-cancel class="cancel">${5:Cancel}</action-sheet-cancel>
 	</action-sheet>
 snippet wblockif
 	<block wx:if="{{ ${1} }}">
 	  ${2}
 	</block>
 snippet wbutton
-	<button type="${1:default}" size="${2:default}" loading="${3:true}" plain="${4:false}" disabled="${5:false}" bindtap="${6}" hover-class="${7:custom-button-hover-class}" ${8:formType="${9:submit}"}>${10}</button>
+	<button type="${1:default}" size="${2:default}" loading="${3:true}" plain="${4:false}" disabled="${5:false}" bindtap="${6}" hover-class="${7:custom-button-hover-class}" ${8:formType}='${9:submit}'>${10}</button>
 snippet wcanvas
 	<canvas canvas-id="${1}" binderror="${2}" ${3:hidden}></canvas>
 snippet wcheckbox
@@ -24,15 +24,15 @@ snippet wtext
 snippet wfor
 	<view wx:for-items="{{ ${1} }}"> {{ ${2} }} </view>
 snippet wform
-	<form ${1:bindsubmit="${2:formSubmit}"} ${3:bindreset="${4:formReset}"}>
+	<form ${1:bindsubmit}="${2:formSubmit}" ${3:bindreset}="${4:formReset}">
 		${5}
 	</form>
 snippet wicon
 	<icon type="${1}" size="${2}"/>
 snippet wimage
-	<image style="${1}" mode="${2}" src="${3}" ${4:binderror="${5}"} ${6:bindload="${7}"}></image>
+	<image style="${1}" mode="${2}" src="${3}" ${4:binderror=}"${5}" ${6:bindload}="${7}"></image>
 snippet winput
-	<input placeholder="${1}" focus="${2:false}" value="${3}" type="${4:text}" password="${5:false}" ${6:placeholder-style="${7:custom-placeholder-style}"} ${8:placeholder-class="${9:custom-placeholder-class}"} disabled="${10:false}" maxlength=${11:0} bindchange="${12}" bindinput="${13}" bindfocus="${14}" bindblur="${15}" ${16:auto-focus}/>
+	<input placeholder="${1}" focus="${2:false}" value="${3}" type="${4:text}" password="${5:false}" ${6:placeholder-style}="${7:custom-placeholder-style}" ${8:placeholder-class}="${9:custom-placeholder-class}" disabled="${10:false}" maxlength=${11:0} bindchange="${12}" bindinput="${13}" bindfocus="${14}" bindblur="${15}" ${16:auto-focus}/>
 	${17}
 snippet winputautofocus
 	<input placeholder="${1}" auto-focus/>
@@ -50,7 +50,7 @@ snippet wloading
 snippet wmap
 	<map longitude="${1}" latitude="${2}" markers="${3}" covers="${4}" ${5:scale="${6}"}></map>
 snippet wmodal
-	<modal ${1:title="${2}"} ${3:confirm-text="${4:确定}"} ${5:cancel-text="${6:取消}" } ${7:hidden} bindconfirm="${8}" bindcancel="${9}" ${10:no-cancel"}>
+	<modal ${1:title}="${2}" ${3:confirm-text}="${4:确定}" ${5:cancel-text}="${6:取消}"  ${7:hidden} bindconfirm="${8}" bindcancel="${9}" ${10:no-cancel"}>
 		${11}
 	</modal>
 snippet wnavigator
@@ -70,7 +70,7 @@ snippet wscrollview
 		${6}
 	</scroll-view>
 snippet wslider
-	<slider bindchange="${1}" min="${2}" max="${3}" ${5:show-value} step=${6:1} ${7:disabled="${7:false}"} value="${8}"/>
+	<slider bindchange="${1}" min="${2}" max="${3}" ${5:show-value} step=${6:1} ${7:disabled}="${7:false}" value="${8}"/>
 snippet wswpier
 	<swpier indicator-dots="${1}" autoplay="${2:true}" interval="${3:1500}" duration="${4:500}">
 		<block wx:for-items="${5}">
@@ -86,7 +86,7 @@ snippet wtemplate
 		${3}
 	</template>
 snippet wtoast
-	<toast ${1:hidden} ${2:duration="${3:1500}"} bindchange="${4}">
+	<toast ${1:hidden} ${2:duration}="${3:1500}" bindchange="${4}">
 		${5}
 	</toast>
 snippet wvideo

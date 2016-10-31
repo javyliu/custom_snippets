@@ -99,7 +99,7 @@ snippet apiconnskt
 			${5}
 		},
 		fail: function(res) {
-			{6}
+			${6}
 		},
 		complete: function(res) {
 			${7}
@@ -119,7 +119,7 @@ snippet apidownloadfile
 			${6}
 		},
 		fail: function(res) {
-			{7}
+			${7}
 		},
 		complete: function(res) {
 			${8}
@@ -141,7 +141,7 @@ snippet apiopenlocation
 			${7}
 		},
 		complete: function(res){
-			$(8)
+			${8}
 		}
 	});
 snippet apigetlocation
@@ -592,7 +592,7 @@ snippet apiuploadfile
 			${6}
 		},
 		fail: function(res) {
-			{7}
+			${7}
 		},
 		complete: function(res) {
 			${8}
@@ -600,7 +600,7 @@ snippet apiuploadfile
 	});
 snippet apishowtoast
 	wx.showToast({
-		title: '${1:操作成功}',
+		title: '${1:success}',
 		icon: '${2:success}',
 		duration: ${3:2000},
 		success: function(){
@@ -617,17 +617,17 @@ snippet apihidetoast
 	wx.hideToast()
 snippet apishowmodal
 	wx.showModal({
-		title: '${1:提示}',
-		content: '${2:模态弹窗}',
+		title: '${1:prompt}',
+		content: '${2:dynamic}',
 		showConcel: ${3:false},
-		cancelText: '${4:取消}',
+		cancelText: '${4:cancel}',
 		cancelColor: '${5:#000000}',
-		confirmText: '${6:确定}',
+		confirmText: '${6:ok}',
 		confirmColor: '${7:#3cc51f}'
 		success: function(res){
 			${8}
 			if (res.confirm){
-				console.log('用户点击确定')
+				console.log('click ok')
 			}
 		},
 		fail: function(){
@@ -671,9 +671,9 @@ snippet gulprsync
 	gulp.task('deploy', () => {
 		return gulp.src('dist/**')
 			.pipe(rsync({
-				root: 'dist',
-				hostname: 'qmliu@192.168.30.244',
-				destination: '/mnt/e/web_apps/weapp_base/',
+				root: '${1:dist}',
+				hostname: '${2:qmliu@192.168.30.244}',
+				destination: '${3:/mnt/e/web_apps/weapp_base/}',
 				archive: true,
 				silent: true,
 				//  username: 'oswap',

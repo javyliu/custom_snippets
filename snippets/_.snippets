@@ -1,11 +1,10 @@
 snippet l
 	=> ${1}
 snippet lc
-	#{${1}}${2}
+	#{${1}}
 snippet ops
 	options: 'default charset=utf8'
 snippet tap
-	tap{|t|Rails.logger.info(t.inspect)}
+	tap{|t|${1:Rails.logger.info(t.inspect)}}
 snippet swi
 	set wildignore+=${1:*/node_modules/*}
-	${2}
